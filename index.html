@@ -8,17 +8,46 @@
     <title>Projekt</title>
 </head>
 <body class="bg-gray-800">
-    <div class="bg-blue-900 h-40 flex justify-evenly">
+    <div class="bg-blue-900 h-40 flex justify-evenly mb-3">
         <p class="bg-pink-300 text-white rounded-full p-7 pt-4 text-6xl absolute left-4 top-2">Osu!</p>
         <a href="./index.html" class="text-2xl h-fit my-auto text-gray-300 hover:text-gray-400">Home</a>
         <a href="./index.html" class="text-2xl h-fit my-auto text-gray-300 hover:text-gray-400 border-b-2 hover:border-gray-400">Beatmaps</a>
         <a href="./index.html" class="text-2xl h-fit my-auto text-gray-300 hover:text-gray-400">Rankings</a>
     </div>
-    <div class="bg-black opacity-50 h-10 my-1 mx-auto text-gray w-3/5 flex justify-center">
-        <p class="text-white">Upload</p>
+    <div class="bg-black opacity-50 h-10 my-1 mx-auto text-gray w-3/5 flex justify-center pt-2">
+        <form id="uploadForm" name="uploadForm" class="w-full">
+            <section class="flex flex-row justify-evenly">
+                <div>
+                    <label for="title" class="text-white">Song title</label>
+                    <input type="text" name="title" id="title" class="focus-within:outline-none" required>
+                </div>
+                <div>
+                    <label for="artist" class="text-white">Artist</label>
+                    <input type="text" name="artist" id="artist" class="focus-within:outline-none" required>
+                </div>
+                <div>
+                    <label for="user" class="text-white">Username</label>
+                    <input type="text" name="user" id="user" class="focus-within:outline-none" required>
+                </div>
+                <div>
+                    <label for="song" class="text-white">mp3</label>
+                    <input type="file" name="song" id="song" class="focus-within:outline-none" required>
+                </div>
+                <button type="submit" class="bg-gray-700 rounded-lg p-1 text-white">Upload</button>
+            </section>
+        </form>
     </div>
-    <div class="bg-black opacity-50 min-h-[15rem] mx-auto w-3/5">
-        
+    <div class="bg-black opacity-50 min-h-[15rem] mx-auto w-3/5 flex flex-row justify-evenly p-2 py-5 flex-wrap">
+
+        <div class="text-white bg-gray-700 h-[7rem] w-2/5 mx-10 flex my-5 rounded-xl overflow-hidden">
+            <div class="h-full bg-pink-300 w-1/4 mr-7"></div>
+            <div class="w-full mt-1">
+                <h1 class="text-3xl">[Song title]</h1>
+                <h2 class="text-xl">By [artist]</h2>
+                <p class="text-xs my-2">Mapped by [username]</p>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>

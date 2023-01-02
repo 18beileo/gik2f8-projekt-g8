@@ -21,21 +21,25 @@
             <section class="flex flex-row justify-evenly">
                 <div>
                     <label for="title" class="text-white">Song title</label>
-                    <input type="text" name="title" id="title" class="focus-within:outline-none" required>
+                    <input type="text" name="title" id="title" class="focus-within:outline-none">'
+                    <p class="text-red-600 pointer-events-none hidden">Error message</p>
                 </div>
                 <div>
                     <label for="artist" class="text-white">Artist</label>
-                    <input type="text" name="artist" id="artist" class="focus-within:outline-none" required>
+                    <input type="text" name="artist" id="artist" class="focus-within:outline-none">
+                    <p class="text-red-600 pointer-events-none hidden">Error message</p>
                 </div>
                 <div>
                     <label for="user" class="text-white">Username</label>
-                    <input type="text" name="user" id="user" class="focus-within:outline-none" required>
+                    <input type="text" name="user" id="user" class="focus-within:outline-none">
+                    <p class="text-red-600 pointer-events-none hidden">Error message</p>
                 </div>
                 <div>
                     <label for="song" class="text-white">mp3</label>
-                    <input type="file" name="song" id="song" class="focus-within:outline-none" required>
+                    <input type="file" name="song" id="song" class="focus-within:outline-none">
+                    <p class="text-red-600 pointer-events-none hidden">Error message</p>
                 </div>
-                <button type="submit" class="bg-gray-700 rounded-lg p-1 text-white">Upload</button>
+                <button name="submitUploadForm" type="submit" class="bg-gray-700 rounded-lg p-1 text-white">Upload</button>
             </section>
         </form>
     </section>
@@ -50,6 +54,7 @@
             </div>
         </div>
     </main>
-    
+    <script src="Api.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -89,7 +89,7 @@ function onSubmit(e) {
         method: 'POST',
         body: formData,
         headers: {
-          "Content-Type": "multipart/form-data"
+          
         }
     })
         .then((res) => console.log(res))

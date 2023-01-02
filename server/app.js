@@ -39,10 +39,11 @@ app
             }
             
             const newMap = { id: maxMapId + 1, ...map };
+            newMap.fileName = newMap.fileName.substring(0, newMap.fileName.length -4) + `_${newMap.id}` + newMap.fileName.substring(newMap.fileName.length -4, newMap.fileName.length);
             const newList = currentMaps ? [...currentMaps, newMap] : [newMap];
             
             await fs.writeFile("./maps.json", JSON.stringify(newList));
-            res.send("Success!");
+            res.send(newMap);
         }
         catch(error){
             res.status(500).send({error: error.stack});

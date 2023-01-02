@@ -1,3 +1,5 @@
+window.addEventListener("load", renderMaps);
+
 uploadForm.addEventListener('submit', onSubmit);
 
 uploadForm.title.addEventListener('input', (e) => validateField(e.target));
@@ -16,7 +18,9 @@ let artistValid = true;
 let userValid = true;
 let songValid = true;
 
-const api = new Api("localhost:5000/tasks");
+const api = new Api("http://localhost:5000/maps");
+
+const mapList = document.getElementById("mapList");
 
 function validateField(field) {
 
@@ -70,20 +74,54 @@ function onSubmit(e) {
     e.preventDefault();
 
     if(titleValid && artistValid && userValid && songValid){
-        saveSong();
+        saveMap();
     }
 
-    function saveSong() {
-        const song = {
+    function saveMap() {
+        const map = {
             title: uploadForm.title.value,
             artist: uploadForm.artist.value,
             user: uploadForm.user.value,
             fileName: uploadForm.song.value.split('fakepath\\').pop()
         }
 
-        console.log(song)
-
-        api.create(song);
+        api.create(map).then((map) => {
+            if(map){
+                renderMaps();
+            }
+        });
     }
 }
 
+function renderMaps(){
+    api.getAll().then((maps) => {
+        mapList.innerHTML="";
+
+        if (maps && maps.length > 0) {
+            maps.forEach((map) => {
+                mapList.insertAdjacentHTML('beforeend', renderMap(map));
+            });
+        }
+    });
+}
+
+function renderMap({id, title, artist, user, song}){
+    let html = `
+    <div id="${id}" class="text-white bg-gray-700 h-[7rem] w-2/5 mx-10 flex my-5 rounded-xl overflow-hidden">
+        <div class="h-full bg-pink-300 w-1/4 mr-7 text-white flex pt-8 text-4xl justify-center pointer-events-none">Osu!</div>
+        <div class="w-full mt-1">
+            <h1 class="text-3xl">${title}</h1>
+            <h2 class="text-xl">By ${artist}</h2>
+            <p class="text-xs my-2">Mapped by ${user}</p>
+        </div>
+        <button onclick="deleteTask(${id})" class="bg-red-600 h-1/4 text-xs my-2 mr-1 rounded-lg p-1">Delete</p>
+    </div>`;
+
+    return html;
+}
+
+function deleteTask(id) {  
+    api.remove(id).then((result) => {
+      renderMaps();
+    });
+}

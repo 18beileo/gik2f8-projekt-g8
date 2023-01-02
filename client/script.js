@@ -80,7 +80,7 @@ function onSubmit(e) {
 
     const formData = new FormData();
 
-    formData.append("files", files.files);
+    formData.append("files", files.files[0]);
     formData.append("title", title.value);
     formData.append("artist", artist.value);
     formData.append("user", user.value);

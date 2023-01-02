@@ -73,6 +73,29 @@ function validateField(field) {
 function onSubmit(e) {
     e.preventDefault();
 
+    const files = document.getElementById('song');
+    const title = document.getElementById('title');
+    const artist = document.getElementById('artist');
+    const user = document.getElementById('user');
+
+    const formData = new FormData();
+
+    formData.append("files", files.files);
+    formData.append("title", title.value);
+    formData.append("artist", artist.value);
+    formData.append("user", user.value);
+    
+    fetch("http://localhost:5000/upload_files", {
+        method: 'POST',
+        body: formData,
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+    })
+        .then((res) => console.log(res))
+        .catch((err) => ("Error occured", err));
+
+    /*
     if(titleValid && artistValid && userValid && songValid){
         saveMap();
     }
@@ -85,12 +108,15 @@ function onSubmit(e) {
             fileName: uploadForm.song.value.split('fakepath\\').pop()
         }
 
+
+
         api.create(map).then((map) => {
             if(map){
                 renderMaps();
             }
         });
     }
+    */
 }
 
 function renderMaps(){

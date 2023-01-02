@@ -6,7 +6,7 @@ class Api{
     }
 
     create(data){
-        console.log(`Create ${data.user}`);
+        console.log(`Create`);
     }
 
     getAll(data){

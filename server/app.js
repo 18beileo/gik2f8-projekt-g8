@@ -3,7 +3,17 @@ const app = express();
 const fs = require('fs/promises');
 const multer = require('multer');
 
-const upload = multer({ dest: "./songs" });
+const fileStorageEngine = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './songs')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    },
+});
+
+const upload = multer({storage: fileStorageEngine});
+
 
 
 

@@ -95,7 +95,6 @@ function onSubmit(e) {
         .then((res) => console.log(res))
         .catch((err) => ("Error occured", err));
 
-    /*
     if(titleValid && artistValid && userValid && songValid){
         saveMap();
     }
@@ -116,7 +115,7 @@ function onSubmit(e) {
             }
         });
     }
-    */
+
 }
 
 function renderMaps(){
